@@ -1,7 +1,7 @@
 # Python 3.5 ast
 
 import typing
-from typing import Any, Union, Iterator, Optional
+from typing import Any, Union, Iterator, Optional, Lits
 
 from _ast import *
 
@@ -10,7 +10,7 @@ class NodeVisitor():
     def generic_visit(self, node: AST) -> Any: ...
 
 class NodeTransformer(NodeVisitor):
-    def generic_visit(self, node: AST) -> Optional[AST]: ...
+    def generic_visit(self, node: AST) -> Union[Optional[AST], List[AST]]: ...
 
 def parse(source: Union[str, bytes], filename: Union[str, bytes] = ..., mode: str = ...) -> Module: ...
 def copy_location(new_node: AST, old_node: AST) -> AST: ...
